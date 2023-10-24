@@ -10,6 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class TeacherServiceImplementsTest {
     TeacherServiceImplements teacherService = new TeacherServiceImplements();
 
+
+    /////TESTS TO CHECK THE COURSES THE TEACHER TEACH
     @Test
     void coursesTaughtByTeacherTestOne() {
         Teacher teacher = new Teacher(3);
@@ -17,6 +19,7 @@ class TeacherServiceImplementsTest {
 
     }
 
+    //TESTS TO CHECK STUDENT PASS OR FAIL COURSES
     @Test
     void passOrFailStudentsToCheckIfStudentGotA() {
         Students student = new Students(){
