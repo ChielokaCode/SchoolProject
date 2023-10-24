@@ -1,9 +1,10 @@
 package org.school.schoolproject.entities;
 
+import lombok.Data;
 import org.school.schoolproject.entities.enums.NonAcademicRoles;
 import java.util.Objects;
 
-
+@Data
 public class NonAcademicStaff extends Staffs{
     private NonAcademicRoles roles;
 

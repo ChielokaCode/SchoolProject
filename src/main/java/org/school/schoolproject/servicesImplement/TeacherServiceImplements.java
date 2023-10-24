@@ -7,31 +7,19 @@ import org.school.schoolproject.services.TeacherServices;
 
 public class TeacherServiceImplements implements TeacherServices {
 
-    private int totalCourseMark;
-
-    //COURSES TEACHER CAN TEACH
-    @Override
-    public boolean coursesTaughtByTeacher(Teacher teacher) {
-        teacher.addCoursesTaught();
-        teacher.displayCoursesTeacherTeach();
-
-        return true;
-
-    }
-
     ///TEACHER PASS OR FAIL STUDENTS BASED ON COURSE AVERAGE///
     @Override
-    public String passOrFailStudents(Students students) {
+    public String passOrFailStudents(Courses courses) {
 
-        if (students.calCourseAverage() >= 80  && students.calCourseAverage() <= 100) {
+        if (courses.calCourseAverage() >= 80  && courses.calCourseAverage() <= 100) {
             return "Student got A";
-        }else if (students.calCourseAverage() >= 70 && students.calCourseAverage() < 80){
+        }else if (courses.calCourseAverage() >= 70 && courses.calCourseAverage() < 80){
             return "Student got B";
-        }else if (students.calCourseAverage() >= 50 && students.calCourseAverage() < 70){
+        }else if (courses.calCourseAverage() >= 50 && courses.calCourseAverage() < 70){
             return "Student got C";
-        } else if(students.calCourseAverage() >= 30 && students.calCourseAverage() < 50){
+        } else if(courses.calCourseAverage() >= 30 && courses.calCourseAverage() < 50){
             return "Student got D";
-        }else if (students.calCourseAverage() >= 0 && students.calCourseAverage() < 30){
+        }else if (courses.calCourseAverage() >= 0 && courses.calCourseAverage() < 30){
             return "Student got F - Student fails Course";
         }else {
             return "Invalid Mark";

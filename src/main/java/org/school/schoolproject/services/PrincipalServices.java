@@ -1,5 +1,6 @@
 package org.school.schoolproject.services;
 
+import org.school.schoolproject.entities.Courses;
 import org.school.schoolproject.entities.Students;
 import org.school.schoolproject.entities.Teacher;
 
@@ -11,9 +12,9 @@ public interface PrincipalServices {
     String admitApplicants(int age);
 
     //PRINCIPAL EMPLOYS TEACHER BASED ON THE NUMBER OF COURSES TEACHER CAN TEACH//
-    String employTeachers(Teacher teacher);
+    String employTeachers(Courses courses);
 
     //PRINCIPAL EXPELS STUDENTS BASED ON POOR GRADES BELOW 20%//
-    String expelStudents(Students students);
+    String expelStudents(Courses courses);
 
 }

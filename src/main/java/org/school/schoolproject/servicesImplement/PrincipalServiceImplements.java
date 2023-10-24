@@ -23,8 +23,9 @@ public class PrincipalServiceImplements implements PrincipalServices {
     ///The teacher is employable if the teacher can teach 3 or more courses
     //The teacher won't be employed if the teacher cannot teach up to 3 courses
     @Override
-    public String employTeachers(Teacher teacher) {
-        if (teacher.noOfCourse() >= teacher.minNoOfCourse) {
+    public String employTeachers(Courses courses) {
+        Teacher teacher = new Teacher(3);
+        if (courses.noOfCourse() >= teacher.minNoOfCourse) {
             return "Teacher can teach 3 or more courses - Teacher EMPLOYED";
         }else {
             return "Teacher can't teach up to 3 courses  - Teacher NOT EMPLOYED";
@@ -34,13 +35,13 @@ public class PrincipalServiceImplements implements PrincipalServices {
 
     //PRINCIPAL EXPELS STUDENTS BASED ON POOR GRADES BELOW 20%//
     @Override
-    public String expelStudents(Students students) {
-        students.totalCourseMark = 0;
-        for (Courses c : Students.coursesList) {
-            students.totalCourseMark += c.getCourseMark();
+    public String expelStudents(Courses courses) {
+        courses.totalCourseMark = 0;
+        for (Courses c : Courses.listOfCourses) {
+            courses.totalCourseMark += c.getCourseMark();
         }
 
-        int courseAverage = students.totalCourseMark / students.noOfCourseTaken();
+        int courseAverage = courses.totalCourseMark / courses.noOfCourse();
         return (courseAverage < 20) ? "Student is expelled on basis of bad grades" : "Students grades are Ok - Not Expelled";
 
 

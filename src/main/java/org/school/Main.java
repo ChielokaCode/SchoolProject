@@ -1,9 +1,10 @@
 package org.school;
 
+import org.school.schoolproject.entities.Courses;
 import org.school.schoolproject.entities.Students;
 import org.school.schoolproject.entities.Teacher;
+import org.school.schoolproject.servicesImplement.CourseServiceImplements;
 import org.school.schoolproject.servicesImplement.PrincipalServiceImplements;
-import org.school.schoolproject.servicesImplement.StudentServiceImplements;
 import org.school.schoolproject.servicesImplement.TeacherServiceImplements;
 
 
@@ -12,9 +13,10 @@ public class Main {
 
         PrincipalServiceImplements principalService = new PrincipalServiceImplements();
         TeacherServiceImplements teacherService = new TeacherServiceImplements();
-        StudentServiceImplements studentService = new StudentServiceImplements();
+        CourseServiceImplements courseService = new CourseServiceImplements();
         Students student = new Students();
         Teacher teacher = new Teacher(3);
+        Courses courses = new Courses();
 
 
         //////SCHOOL SYSTEM STARTS/////////////
@@ -22,20 +24,20 @@ public class Main {
 
         /////COURSES TEACHER TEACHES AND IF TEACHER IS EMPLOYABLE OR NOT
         System.out.println();
-        teacherService.coursesTaughtByTeacher(teacher);
-        System.out.println(principalService.employTeachers(teacher));
+        courseService.coursesTaughtByTeacher(courses);
+        System.out.println(principalService.employTeachers(courses));
 
         //COURSES STUDENT TAKES
         System.out.println();
-        studentService.courseStudentTakes(student);
+        courseService.courseStudentTakes(courses);
 
         //TO CHECK IF STUDENT PASSES OR FAILS COURSE BASED ON COURSE AVERAGE
         System.out.println();
-        System.out.println("Student Course Average is "+ student.calCourseAverage() + "%");
-        System.out.println(teacherService.passOrFailStudents(student));
+        System.out.println("Student Course Average is "+ courses.calCourseAverage() + "%");
+        System.out.println(teacherService.passOrFailStudents(courses));
 
         //TO EXPEL A STUDENT IF COURSE AVERAGE IS BELOW 30%
-        System.out.println(principalService.expelStudents(student));
+        System.out.println(principalService.expelStudents(courses));
 
         //TO ADMIT A STUDENT BASED ON AGE
         System.out.println();

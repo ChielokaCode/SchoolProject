@@ -1,6 +1,7 @@
 package org.school.schoolproject.servicesImplement;
 
 import org.junit.jupiter.api.Test;
+import org.school.schoolproject.entities.Courses;
 import org.school.schoolproject.entities.Students;
 import org.school.schoolproject.entities.Teacher;
 
@@ -36,9 +37,9 @@ class PrincipalServiceImplementsTest {
     ////////////////EMPLOY TEACHER TESTS////////////////
     @Test
     void employTeachersWithNoOfCoursesUpToThreeCourses() {
-        Teacher teacher = new Teacher(3);
-        teacher.addCoursesTaught(); //This adds courses to my list, and then I can get the number of Courses
-        assertEquals("Teacher can teach 3 or more courses - Teacher EMPLOYED", principal.employTeachers(teacher));
+        Courses courses = new Courses();
+        courses.addCoursesToList(); //This adds courses to my list, and then I can get the number of Courses
+        assertEquals("Teacher can teach 3 or more courses - Teacher EMPLOYED", principal.employTeachers(courses));
     }
 
 
@@ -46,42 +47,42 @@ class PrincipalServiceImplementsTest {
     void employTeachersWithNoOfCoursesLessThanThreeCourses() {
         ///to check a number of course less than my actual number of course, I have to override the
         ///previous number of course and set a new value for the test
-        Teacher teacher = new Teacher(3) {
+        Courses courses = new Courses() {
             @Override
             public int noOfCourse() {
                 return 1;
             }
         };
-        teacher.addCoursesTaught(); //This adds courses to my list, and then I can get the number of Courses
-        assertEquals("Teacher can't teach up to 3 courses  - Teacher NOT EMPLOYED",principal.employTeachers(teacher));
+        courses.addCoursesToList(); //This adds courses to my list, and then I can get the number of Courses
+        assertEquals("Teacher can't teach up to 3 courses  - Teacher NOT EMPLOYED",principal.employTeachers(courses));
     }
 
     @Test
     void employTeachersWithNoOfCoursesEqualToThree() {
         ///to check a number of course less than my actual number of course, I have to override the
         ///previous number of course and set a new value for the test
-        Teacher teacher = new Teacher(3) {
+        Courses courses = new Courses() {
             @Override
             public int noOfCourse() {
                 return 3;
             }
         };
-        teacher.addCoursesTaught(); //This adds courses to my list, and then I can get the number of Courses
-        assertEquals("Teacher can teach 3 or more courses - Teacher EMPLOYED",principal.employTeachers(teacher));
+        courses.addCoursesToList(); //This adds courses to my list, and then I can get the number of Courses
+        assertEquals("Teacher can teach 3 or more courses - Teacher EMPLOYED",principal.employTeachers(courses));
     }
 
     ////////////////EXPEL STUDENTS TESTS////////////////////
     @Test
     void expelStudentsCheckIfCourseAverageIsAbove30() {
-        Students student = new Students();
-        student.addCoursesTaken(); //This adds courses to my list, and then I can get the number of Courses
-        assertEquals("Students grades are Ok - Not Expelled", principal.expelStudents(student));
+        Courses courses = new Courses();
+        courses.addCoursesToList(); //This adds courses to my list, and then I can get the number of Courses
+        assertEquals("Students grades are Ok - Not Expelled", principal.expelStudents(courses));
     }
 
     @Test
     void expelStudentsCheckIfCourseAverageIsBelow30() {
-        Students student = new Students();
-        student.addCoursesTaken(); //This adds courses to my list, and then I can get the number of Courses
-        assertNotEquals("Student is expelled on basis of bad grades", principal.expelStudents(student));
+        Courses courses = new Courses();
+        courses.addCoursesToList(); //This adds courses to my list, and then I can get the number of Courses
+        assertNotEquals("Student is expelled on basis of bad grades", principal.expelStudents(courses));
     }
 }
