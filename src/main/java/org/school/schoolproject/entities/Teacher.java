@@ -9,7 +9,6 @@ import java.util.List;
 @Data
 public class Teacher extends Staffs{
 
-    private String Qualification;
     public int minNoOfCourse;
 
     public Teacher(int minNoOfCourse) {

@@ -1,13 +1,15 @@
 package org.school.schoolproject.entities;
 
 import lombok.Data;
+import lombok.Getter;
 import org.school.schoolproject.entities.enums.PrincipalRoles;
 import java.util.Objects;
 
 @Data
+@Getter
 public class Principal extends Staffs{
-    private PrincipalRoles administrativeRoles;
 
+    private PrincipalRoles administrativeRoles;
 
     /////////GETTERS AND SETTERS///////////////
     public PrincipalRoles getAdministrativeRoles() {

@@ -19,7 +19,7 @@ public class CourseServiceImplements implements CourseService {
     @Override
     public boolean courseStudentTakes(Courses courses) {
         courses.addCoursesToList();
-        courses.displayCoursesStudentTakes();
+        courses.displayStudentCourses();
 
         return true;
     }

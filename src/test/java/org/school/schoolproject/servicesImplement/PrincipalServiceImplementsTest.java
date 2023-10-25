@@ -36,7 +36,7 @@ class PrincipalServiceImplementsTest {
 
     ////////////////EMPLOY TEACHER TESTS////////////////
     @Test
-    void employTeachersWithNoOfCoursesUpToThreeCourses() {
+    void employTeachersWithNoOfCoursesMoreThanThreeCourses() {
         Courses courses = new Courses();
         courses.addCoursesToList(); //This adds courses to my list, and then I can get the number of Courses
         assertEquals("Teacher can teach 3 or more courses - Teacher EMPLOYED", principal.employTeachers(courses));

@@ -6,8 +6,8 @@ import java.util.Objects;
 
 @Data
 public class NonAcademicStaff extends Staffs{
-    private NonAcademicRoles roles;
 
+    private NonAcademicRoles roles;
 
     /////////GETTERS AND SETTERS////////////
     public NonAcademicRoles getRoles() {

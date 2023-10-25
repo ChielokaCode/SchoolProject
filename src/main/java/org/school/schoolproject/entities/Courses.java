@@ -59,7 +59,7 @@ public class Courses {
         }
     }
 
-    public void displayCoursesStudentTakes() {
+    public void displayStudentCourses() {
         System.out.println("Student takes "+ listOfCourses.size() +" courses: ");
         for (Courses c : listOfCourses){
             System.out.println(c);
