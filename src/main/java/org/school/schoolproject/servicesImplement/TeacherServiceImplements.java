@@ -1,8 +1,6 @@
 package org.school.schoolproject.servicesImplement;
 
 import org.school.schoolproject.entities.Courses;
-import org.school.schoolproject.entities.Students;
-import org.school.schoolproject.entities.Teacher;
 import org.school.schoolproject.services.TeacherServices;
 
 public class TeacherServiceImplements implements TeacherServices {

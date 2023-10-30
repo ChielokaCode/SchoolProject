@@ -1,7 +1,7 @@
 package org.school.schoolproject.entities;
 
 import lombok.Data;
-import org.school.schoolproject.entities.enums.State;
+import org.school.schoolproject.enums.State;
 
 @Data
 public class Address {

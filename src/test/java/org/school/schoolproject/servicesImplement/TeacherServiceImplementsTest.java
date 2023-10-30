@@ -2,8 +2,6 @@ package org.school.schoolproject.servicesImplement;
 
 import org.junit.jupiter.api.Test;
 import org.school.schoolproject.entities.Courses;
-import org.school.schoolproject.entities.Students;
-import org.school.schoolproject.entities.Teacher;
 
 import static org.junit.jupiter.api.Assertions.*;
 

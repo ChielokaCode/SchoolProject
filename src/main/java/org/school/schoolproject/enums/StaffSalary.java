@@ -1,4 +1,4 @@
-package org.school.schoolproject.entities.enums;
+package org.school.schoolproject.enums;
 
 public enum StaffSalary {
     N_20000,

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Getter
 @Data
 public class Courses {
 
@@ -15,7 +14,7 @@ public class Courses {
     private String courseName;
     private int courseNumber;
     private int courseMark;
-
+    private int minNoOfCourse = 3;
     public int totalCourseMark;
 
 
@@ -53,7 +52,7 @@ public class Courses {
     }
 
     public void displayCoursesTeacherTeach() {
-        System.out.println("Teacher can teach "+ listOfCourses.size() +" courses: ");
+        System.out.println("COURSES TAUGHT BY TEACHERS");
         for (Courses c : listOfCourses){
             System.out.println(c.getCourseName());
         }

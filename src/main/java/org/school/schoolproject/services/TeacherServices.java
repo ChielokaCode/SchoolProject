@@ -1,8 +1,6 @@
 package org.school.schoolproject.services;
 
 import org.school.schoolproject.entities.Courses;
-import org.school.schoolproject.entities.Students;
-import org.school.schoolproject.entities.Teacher;
 
 public interface TeacherServices {
 

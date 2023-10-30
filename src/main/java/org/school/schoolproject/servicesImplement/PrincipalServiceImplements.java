@@ -1,8 +1,6 @@
 package org.school.schoolproject.servicesImplement;
 
 import org.school.schoolproject.entities.Courses;
-import org.school.schoolproject.entities.Students;
-import org.school.schoolproject.entities.Teacher;
 import org.school.schoolproject.services.PrincipalServices;
 
 
@@ -24,8 +22,8 @@ public class PrincipalServiceImplements implements PrincipalServices {
     //The teacher won't be employed if the teacher cannot teach up to 3 courses
     @Override
     public String employTeachers(Courses courses) {
-        Teacher teacher = new Teacher(3);
-        if (courses.noOfCourse() >= teacher.minNoOfCourse) {
+//        Teacher teacher = new Teacher(3);
+        if (courses.noOfCourse() >= courses.getMinNoOfCourse()) {
             return "Teacher can teach 3 or more courses - Teacher EMPLOYED";
         }else {
             return "Teacher can't teach up to 3 courses  - Teacher NOT EMPLOYED";
