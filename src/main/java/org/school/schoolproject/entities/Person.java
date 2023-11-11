@@ -9,14 +9,16 @@ import org.school.schoolproject.enums.Gender;
 import org.school.schoolproject.enums.Roles;
 import org.school.schoolproject.enums.StaffSalary;
 
+import javax.management.relation.Role;
 import java.time.LocalDate;
+import java.util.Comparator;
 
 
 @Data
 @SuperBuilder
 @NoArgsConstructor
-@AllArgsConstructor
-public class Person {
+
+public class Person{
 
 
     private String ID;
@@ -35,20 +37,47 @@ public class Person {
     private String isArchived;
     private String isDeleted;
 
+    public Person(String firstName, Roles role){
+        this.firstName = firstName;
+        this.role = role;
+    }
+
+
 
 
     @Override
     public String toString() {
         return "ID: " + ID +
-                " | GradeLevel: " + gradeLevel +
-                " | EmailAddress: " + emailAddress +
-                " | GuardianEmail1: " + guardianEmail1 +
-                " | GuardianEmail2: " + guardianEmail2 +
-                " | FirstName: " + firstName +
-                " | LastName: " + lastName +
-                " | IsArchived: " + isArchived +
-                " | IsDeleted: " + isDeleted +
-                " | Role: " +  role;
+                " , GradeLevel: " + gradeLevel +
+                " , EmailAddress: " + emailAddress +
+                " , GuardianEmail1: " + guardianEmail1 +
+                " , GuardianEmail2: " + guardianEmail2 +
+                " , FirstName: " + firstName +
+                " , LastName: " + lastName +
+                " , IsArchived: " + isArchived +
+                " , IsDeleted: " + isDeleted +
+                " , Role: " + role;
     }
+
+//    @Override
+//    public int compareTo(Person o) {
+//        return this.role.compareTo(o.role);
+//    }
+
+
+
+//    @Override
+//    public String toString() {
+//        return ID +
+//                "," + gradeLevel +
+//                "," + emailAddress +
+//                "," + guardianEmail1 +
+//                "," + guardianEmail2 +
+//                "," + firstName +
+//                "," + lastName +
+//                "," + isArchived +
+//                "," + isDeleted +
+//                "," + role;
+//    }
 
 }

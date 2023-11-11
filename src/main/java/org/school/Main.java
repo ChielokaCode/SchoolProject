@@ -1,27 +1,28 @@
 package org.school;
 
+import org.school.schoolproject.entities.Book;
 import org.school.schoolproject.entities.Courses;
 import org.school.schoolproject.entities.Person;
-import org.school.schoolproject.servicesImplement.CourseServiceImplements;
-import org.school.schoolproject.servicesImplement.PrincipalServiceImplements;
-import org.school.schoolproject.servicesImplement.TeacherServiceImplements;
-import org.school.schoolproject.util.StudentUtil;
-import org.school.schoolproject.util.TeacherUtil;
+import org.school.schoolproject.entities.RequestList;
+import org.school.schoolproject.enums.Roles;
+import org.school.schoolproject.servicesImplement.*;
+import org.school.schoolproject.utility.StudentUtils;
+import org.school.schoolproject.utility.TeacherUtils;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         PrincipalServiceImplements principalService = new PrincipalServiceImplements();
         TeacherServiceImplements teacherService = new TeacherServiceImplements();
         CourseServiceImplements courseService = new CourseServiceImplements();
-        StudentUtil studentUtil = new StudentUtil();
-        TeacherUtil teacherUtil = new TeacherUtil();
+        LibraryServiceImplements1 libraryService = new LibraryServiceImplements1();
+        StudentUtils studentUtil = new StudentUtils();
+        TeacherUtils teacherUtil = new TeacherUtils();
         Courses courses = new Courses();
 
 
@@ -32,8 +33,8 @@ public class Main {
 
         ////TO VIEW TEACHER DETAILS////
         System.out.println("TEACHERS PRESENT IN SCHOOL");
-        Person teacher1 = Person.builder().firstName("Emmanuel").lastName("James").build();
-        Person teacher2 = Person.builder().firstName("Sam").lastName("Felix").build();
+        Person teacher1 = Person.builder().firstName("Emmanuel").lastName("James").role(Roles.TEACHER).build();
+        Person teacher2 = Person.builder().firstName("Sam").lastName("Felix").role(Roles.TEACHER).build();
 
         List<Person> listOfTeachers = new ArrayList<>(Arrays.asList(teacher1,teacher2));
         for(Person teacher : listOfTeachers){
@@ -50,8 +51,8 @@ public class Main {
         /////STUDENTS PRESENT IN SCHOOL///
         System.out.println();
         System.out.println("STUDENTS PRESENT IN SCHOOL");
-        Person student1 = Person.builder().firstName("Felix").lastName("Ozo").build();
-        Person student2 = Person.builder().firstName("Emeka").lastName("Matthew").build();
+        Person student1 = Person.builder().firstName("Felix").lastName("Ozo").role(Roles.JUNIOR_STUDENT).build();
+        Person student2 = Person.builder().firstName("Emeka").lastName("Matthew").role(Roles.SENIOR_STUDENT).build();
 
         List<Person> listOfStudents = new ArrayList<>(Arrays.asList(student1,student2));
         for(Person student : listOfStudents){
@@ -78,22 +79,65 @@ public class Main {
         System.out.println();
 
 
-        /////READ INPUT, CREATED OBJECTS AND UPDATED INFO FROM EXCEL FILE(CSV FORMAT)
+        ///READ INPUT, CREATED OBJECTS AND UPDATED INFO FROM EXCEL FILE(CSV FORMAT)
         System.out.println("LIST OF STUDENTS PRESENT IN FILE");
-        studentUtil.readStudentFiles();
+
+        studentUtil.readStudentFiles("/Users/wikiwoo/Desktop/JavaTuts/week-3-ChielokaCode/src/main/java/org/school/schoolproject/file/student-data-seeding1.csv");
         System.out.println(" ");
+
         System.out.println("LIST OF TEACHERS PRESENT IN FILE");
-        teacherUtil.readTeacherFiles();
+        teacherUtil.readTeacherFiles("/Users/wikiwoo/Desktop/JavaTuts/week-3-ChielokaCode/src/main/java/org/school/schoolproject/file/teacher-data.csv");
 
 
+        ////WRITE STUDENT INFO TO CREATED FILE ON SYSTEM
+        System.out.println();
+        studentUtil.writeStudentInfoToFile("/Users/wikiwoo/Desktop/JavaTuts/week-3-ChielokaCode/src/main/java/org/school/schoolproject/file/student-output1.csv");
 
+        ////WRITE TEACHER INFO TO CREATED FILE ON SYSTEM
+        System.out.println();
+        teacherUtil.writeTeacherInfoToFile("/Users/wikiwoo/Desktop/JavaTuts/week-3-ChielokaCode/src/main/java/org/school/schoolproject/file/teacher-output1.csv");
 
+//////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////LIBRARY/////////////////////////////////////////////////
+        Book book1 = new Book("The Earth", 4);
+        Book book2 = new Book("The Planet", 3);
 
+        System.out.println("************LIBRARY*************");
+        System.out.println();
 
+        libraryService.addBook(book1);
+        libraryService.addBook(book2);
+        System.out.println("************************************************");
+        System.out.println("IMPLEMENTATION 1 - TEACHER WITH PRIORITY");
+        System.out.println("************************************************");
+        System.out.println("REQUEST MADE FOR PRIORITY");
+        System.out.println();
 
+        libraryService.priorityRequest(student1, "The Earth");
+        libraryService.priorityRequest(student2, "The Earth");
+        libraryService.priorityRequest(teacher1, "The Earth");
+        System.out.println();
+        /////TEACHER WITH PRIORITY
+        System.out.println("REQUEST GRANTED");
+        System.out.println();
+        libraryService.grantPriorityRequest();
+        System.out.println();
+        System.out.println("************************************************");
+        System.out.println("IMPLEMENTATION 2 - FIRST COME FIRST SERVE");
+        System.out.println("************************************************");
+        System.out.println("REQUEST MADE FOR FIFO");
+        System.out.println();
 
+        libraryService.fifoRequest(student2, "The Planet");
+        libraryService.fifoRequest(student1, "The Planet");
+        libraryService.fifoRequest(teacher2, "The Planet");
+        System.out.println();
 
+        ////FIRST COME FIRST SERVE
+        System.out.println("REQUEST GRANTED");
+        System.out.println();
 
+        libraryService.grantFifoRequest();
 
     }
 }

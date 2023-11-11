@@ -5,6 +5,7 @@ import org.school.schoolproject.services.TeacherServices;
 
 public class TeacherServiceImplements implements TeacherServices {
 
+
     ///TEACHER PASS OR FAIL STUDENTS BASED ON COURSE AVERAGE///
     @Override
     public String passOrFailStudents(Courses courses) {
@@ -24,5 +25,18 @@ public class TeacherServiceImplements implements TeacherServices {
         }
 
     }
+//@Override
+//public List<RequestInfo> requestBook(Person teacher, Book book){
+//    Book book1 =new Book();
+//        System.out.println("Pls Input Book Name: ");
+//        Scanner scan = new Scanner(System.in);
+//        book1.setName(scan.nextLine());
+//        //while (book.getQuantity() > 0 && book.getName().matches(book1.getName())){
+//            if (teacher.getRole() == Roles.TEACHER && book.getName().matches(book1.getName()) && book.getQuantity() > 0){
+//                RequestInfo.requestList.add();
+//            }
+//
+//    return RequestInfo.requestList;
+//    }
 
 }

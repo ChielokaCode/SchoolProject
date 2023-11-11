@@ -4,7 +4,7 @@ import org.school.schoolproject.entities.Courses;
 import org.school.schoolproject.services.PrincipalServices;
 
 
-public class PrincipalServiceImplements implements PrincipalServices {
+public class PrincipalServiceImplements implements PrincipalServices<String, Courses> {
 
 
     ///PRINCIPAL ADMITS APPLICANTS(STUDENTS) BASED ON AGE//
