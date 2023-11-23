@@ -3,8 +3,8 @@ package org.school;
 import org.school.schoolproject.entities.Book;
 import org.school.schoolproject.entities.Courses;
 import org.school.schoolproject.entities.Person;
-import org.school.schoolproject.entities.RequestList;
 import org.school.schoolproject.enums.Roles;
+import org.school.schoolproject.services.BookNotAvailableException;
 import org.school.schoolproject.servicesImplement.*;
 import org.school.schoolproject.utility.StudentUtils;
 import org.school.schoolproject.utility.TeacherUtils;
@@ -15,7 +15,7 @@ import java.util.List;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws BookNotAvailableException {
 
         PrincipalServiceImplements principalService = new PrincipalServiceImplements();
         TeacherServiceImplements teacherService = new TeacherServiceImplements();
@@ -99,28 +99,29 @@ public class Main {
 
 //////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////LIBRARY/////////////////////////////////////////////////
-        Book book1 = new Book("The Earth", 4);
+        Book book1 = new Book("The Earth", 2);
         Book book2 = new Book("The Planet", 3);
 
         System.out.println("************LIBRARY*************");
         System.out.println();
 
-        libraryService.addBook(book1);
-        libraryService.addBook(book2);
+        libraryService.addBook.accept(book1);
+        libraryService.addBook.accept(book2);
         System.out.println("************************************************");
         System.out.println("IMPLEMENTATION 1 - TEACHER WITH PRIORITY");
         System.out.println("************************************************");
         System.out.println("REQUEST MADE FOR PRIORITY");
         System.out.println();
 
-        libraryService.priorityRequest(student1, "The Earth");
-        libraryService.priorityRequest(student2, "The Earth");
-        libraryService.priorityRequest(teacher1, "The Earth");
+        libraryService.makePriorityRequest.accept(student1, "The Earth");
+        libraryService.makePriorityRequest.accept(teacher1, "The Earth");
+        libraryService.makePriorityRequest.accept(student2, "The Earth");
         System.out.println();
-        /////TEACHER WITH PRIORITY
+
+        /////ISSUE BOOK TO TEACHER WITH PRIORITY
         System.out.println("REQUEST GRANTED");
         System.out.println();
-        libraryService.grantPriorityRequest();
+        libraryService.grantPriorityRequest.grantFunction();
         System.out.println();
         System.out.println("************************************************");
         System.out.println("IMPLEMENTATION 2 - FIRST COME FIRST SERVE");
@@ -128,16 +129,16 @@ public class Main {
         System.out.println("REQUEST MADE FOR FIFO");
         System.out.println();
 
-        libraryService.fifoRequest(student2, "The Planet");
-        libraryService.fifoRequest(student1, "The Planet");
-        libraryService.fifoRequest(teacher2, "The Planet");
+        libraryService.makeFifoRequest.accept(student2, "The Planet");
+        libraryService.makeFifoRequest.accept(teacher2, "The Planet");
+        libraryService.makeFifoRequest.accept(student1, "The Planet");
         System.out.println();
 
         ////FIRST COME FIRST SERVE
         System.out.println("REQUEST GRANTED");
         System.out.println();
 
-        libraryService.grantFifoRequest();
+        libraryService.grantFifoRequest.grantFunction();
 
     }
 }
